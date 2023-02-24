@@ -1,6 +1,6 @@
 import 'package:mallika/src/data/models/country_code_model.dart';
 import 'package:mallika/src/data/network/api_service.dart';
-import 'package:mallika/src/domain/repository/auth_repository.dart';
+import 'package:mallika/src/data/repository/auth_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepositoryImpl extends AuthRepository {

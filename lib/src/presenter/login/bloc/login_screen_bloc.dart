@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mallika/src/data/models/country_code_model.dart';
-import 'package:mallika/src/domain/repository/auth_repository.dart';
+import 'package:mallika/src/data/repository/auth_repository.dart';
 
 part 'login_screen_event.dart';
 part 'login_screen_state.dart';
