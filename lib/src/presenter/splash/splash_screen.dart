@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mallika/router/app_router.dart';
-import 'package:mallika/src/presenter/splash/splash_screen_cubit.dart';
+import 'package:mallika/src/presenter/splash/cubit/splash_screen_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -32,7 +32,9 @@ class _SplashScreenState extends State<SplashScreen> {
         },
         builder: (context, state) {
           return const Center(
-            child: Text('mallika'),
+            child: Text(
+              'mallika',
+            ),
           );
         },
       ),
