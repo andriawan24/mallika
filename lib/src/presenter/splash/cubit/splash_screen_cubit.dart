@@ -15,7 +15,7 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
   void checkIsLogin() {
     bool result = _authRepository.getIsLogin();
     if (result) {
-      emit(SplashScreenLoaded('home'));
+      emit(SplashScreenLoaded('main'));
     } else {
       emit(SplashScreenLoaded('login'));
     }

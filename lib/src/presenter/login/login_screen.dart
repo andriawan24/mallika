@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dropdown_search/dropdown_search.dart';
@@ -9,6 +11,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mallika/gen/assets.gen.dart';
 import 'package:mallika/src/data/models/country_code_model.dart';
 import 'package:mallika/src/presenter/login/bloc/login_screen_bloc.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:uni_links/uni_links.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,14 +21,36 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with WidgetsBindingObserver {
   final TextEditingController _phoneController = TextEditingController();
   String _selectedCountryCode = '';
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     context.read<LoginScreenBloc>().add(LoginScreenInitialEvent());
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _phoneController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      context.read<LoginScreenBloc>().add(LoginScreenInitialEvent());
+      Timer(const Duration(seconds: 3), () {
+        final user = Supabase.instance.client.auth.currentSession;
+        if (user != null) {
+          context.pushReplacement('/main');
+        }
+      });
+    }
+    super.didChangeAppLifecycleState(state);
   }
 
   Widget headerTitle() {
@@ -289,7 +315,7 @@ class _LoginScreenState extends State<LoginScreen> {
         top: 36,
         left: 14,
         right: 14,
-        bottom: 14,
+        bottom: 48,
       ),
       child: Column(
         children: [

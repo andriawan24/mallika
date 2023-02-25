@@ -9,7 +9,7 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   bool getIsLogin() {
-    return false;
+    return _supabase.auth.currentUser != null;
   }
 
   @override
@@ -48,7 +48,10 @@ class AuthRepositoryImpl extends AuthRepository {
   @override
   Future<bool> signInWithGoogle() async {
     try {
-      bool result = await _supabase.auth.signInWithOAuth(Provider.google);
+      bool result = await _supabase.auth.signInWithOAuth(
+        Provider.google,
+        redirectTo: 'customscheme://flutterblooksample.com/login',
+      );
       return result;
     } catch (e) {
       rethrow;
