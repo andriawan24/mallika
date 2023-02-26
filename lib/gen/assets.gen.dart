@@ -16,6 +16,9 @@ class $AssetsImagesGen {
   AssetGenImage get icApple =>
       const AssetGenImage('assets/images/ic_apple.png');
 
+  /// File path: assets/images/ic_chef.png
+  AssetGenImage get icChef => const AssetGenImage('assets/images/ic_chef.png');
+
   /// File path: assets/images/ic_google.png
   AssetGenImage get icGoogle =>
       const AssetGenImage('assets/images/ic_google.png');
@@ -24,8 +27,28 @@ class $AssetsImagesGen {
   AssetGenImage get imgLogin =>
       const AssetGenImage('assets/images/img_login.webp');
 
+  /// File path: assets/images/img_onboarding_1.png
+  AssetGenImage get imgOnboarding1 =>
+      const AssetGenImage('assets/images/img_onboarding_1.png');
+
+  /// File path: assets/images/img_onboarding_2.png
+  AssetGenImage get imgOnboarding2 =>
+      const AssetGenImage('assets/images/img_onboarding_2.png');
+
+  /// File path: assets/images/img_onboarding_3.png
+  AssetGenImage get imgOnboarding3 =>
+      const AssetGenImage('assets/images/img_onboarding_3.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [icApple, icGoogle, imgLogin];
+  List<AssetGenImage> get values => [
+        icApple,
+        icChef,
+        icGoogle,
+        imgLogin,
+        imgOnboarding1,
+        imgOnboarding2,
+        imgOnboarding3
+      ];
 }
 
 class Assets {

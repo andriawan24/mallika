@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:dropdown_search/dropdown_search.dart';
@@ -12,7 +11,6 @@ import 'package:mallika/gen/assets.gen.dart';
 import 'package:mallika/src/data/models/country_code_model.dart';
 import 'package:mallika/src/presenter/login/bloc/login_screen_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:uni_links/uni_links.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -43,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       context.read<LoginScreenBloc>().add(LoginScreenInitialEvent());
-      Timer(const Duration(seconds: 3), () {
+      Timer(const Duration(seconds: 1), () {
         final user = Supabase.instance.client.auth.currentSession;
         if (user != null) {
           context.pushReplacement('/main');
